@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Amals home — Chrome extensions, small tools, and side projects."><title>404 · Amals</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet"><link rel="icon" href="/avatar.jpg" type="image/jpeg"><script>
+  (function () {
+    try {
+      var KEY = "amals-cn-locale";
+      var stored = localStorage.getItem(KEY);
+      var path = location.pathname || "/";
+      var onZh = path === "/zh" || path === "/zh/" || path.indexOf("/zh/") === 0;
+
+      function preferZh() {
+        var langs = [];
+        if (navigator.languages && navigator.languages.length) {
+          langs = langs.concat(Array.prototype.slice.call(navigator.languages));
+        }
+        if (navigator.language) langs.push(navigator.language);
+        for (var i = 0; i < langs.length; i++) {
+          var x = String(langs[i] || "").toLowerCase();
+          if (x.indexOf("zh") === 0) return true;
+          if (x.indexOf("en") === 0) return false;
+        }
+        return false;
+      }
+
+      function toZh(p) {
+        if (p === "/" || p === "") return "/zh/";
+        if (p.indexOf("/zh") === 0) return p.endsWith("/") ? p : p + "/";
+        return "/zh" + (p.endsWith("/") ? p : p + "/");
+      }
+
+      function toEn(p) {
+        if (p === "/zh" || p === "/zh/") return "/";
+        if (p.indexOf("/zh/") === 0) {
+          var rest = p.slice(3);
+          return rest.endsWith("/") ? rest : rest + "/";
+        }
+        return p.endsWith("/") ? p : p + "/";
+      }
+
+      var wantZh = stored === "zh" ? true : stored === "en" ? false : preferZh();
+      if (wantZh && !onZh) {
+        location.replace(toZh(path));
+        return;
+      }
+      if (!wantZh && onZh && stored === "en") {
+        location.replace(toEn(path));
+      }
+    } catch (e) {}
+  })();
+</script><link rel="stylesheet" href="/_astro/index.UDbm8vuJ.css"></head> <body> <div class="bg-mesh" aria-hidden="true"> <span class="bg-factor bg-factor-a"></span> <span class="bg-factor bg-factor-b"></span> <span class="bg-factor bg-factor-c"></span> <span class="bg-factor bg-factor-d"></span> </div> <header class="nav"> <div class="wrap nav-inner"> <a class="brand" href="/" aria-label="Amals"> <img class="brand-avatar" src="/avatar.jpg" width="36" height="36" alt=""> </a> <nav class="nav-links" aria-label="Primary"> <a class="lang-switch" href="/zh/404/" lang="zh-CN" data-locale-switch="zh" aria-label="Language"> 中文 </a> </nav> </div> </header> <script>
+  document.querySelectorAll("[data-locale-switch]").forEach(function (el) {
+    el.addEventListener("click", function () {
+      try {
+        localStorage.setItem("amals-cn-locale", el.getAttribute("data-locale-switch") || "");
+      } catch (e) {}
+    });
+  });
+</script>  <main> <section class="hero"> <div class="wrap hero-inner"> <h1 class="hero-brand" aria-label="404"> <span class="hero-letter" style="--i: 0">4</span> <span class="hero-letter" style="--i: 1">0</span> <span class="hero-letter" style="--i: 2">4</span> </h1> <p class="hero-lead">Page not found.</p> <div class="hero-actions"> <a class="btn btn-primary" href="/">Amals</a> </div> </div> </section> </main>  <footer class="site-footer"> <div class="wrap footer-inner"> <p> <a href="mailto:amals.qy@gmail.com">Contact</a>
+· amals.qy@gmail.com </p> </div> </footer> </body></html>
