@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Amals — a personal lab for experiments, AI, and products."><title>404 · Amals</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/avatar.jpg"><script>
+  (function () {
+    try {
+      var KEY = "amals-cn-locale";
+      var stored = localStorage.getItem(KEY);
+      var path = location.pathname || "/";
+      var onZh = path === "/zh" || path === "/zh/" || path.indexOf("/zh/") === 0;
+
+      function preferZh() {
+        var langs = [];
+        if (navigator.languages && navigator.languages.length) {
+          langs = langs.concat(Array.prototype.slice.call(navigator.languages));
+        }
+        if (navigator.language) langs.push(navigator.language);
+        for (var i = 0; i < langs.length; i++) {
+          var x = String(langs[i] || "").toLowerCase();
+          if (x.indexOf("zh") === 0) return true;
+          if (x.indexOf("en") === 0) return false;
+        }
+        return false;
+      }
+
+      function toZh(p) {
+        if (p === "/" || p === "") return "/zh/";
+        if (p.indexOf("/zh") === 0) return p.endsWith("/") ? p : p + "/";
+        return "/zh" + (p.endsWith("/") ? p : p + "/");
+      }
+
+      function toEn(p) {
+        if (p === "/zh" || p === "/zh/") return "/";
+        if (p.indexOf("/zh/") === 0) {
+          var rest = p.slice(3);
+          return rest.endsWith("/") ? rest : rest + "/";
+        }
+        return p.endsWith("/") ? p : p + "/";
+      }
+
+      var wantZh = stored === "zh" ? true : stored === "en" ? false : preferZh();
+      if (wantZh && !onZh) {
+        location.replace(toZh(path));
+        return;
+      }
+      if (!wantZh && onZh && stored === "en") {
+        location.replace(toEn(path));
+      }
+    } catch (e) {}
+  })();
+</script><link rel="stylesheet" href="/_astro/index.C-qooS0I.css"></head> <body class="site-body" data-nav-scrolled="0"> <div class="bg-mesh" aria-hidden="true"> <span class="bg-factor bg-factor-a"></span> <span class="bg-factor bg-factor-b"></span> <span class="bg-factor bg-factor-c"></span> <span class="bg-factor bg-factor-d"></span> </div> <header class="nav"> <a class="brand" href="/" aria-label="Amals"> <img class="brand-avatar" src="/avatar.jpg" width="32" height="32" alt=""> </a> <nav class="nav-links" aria-label="Primary"> <a class="nav-link" href="/ai/?lang=en">AI</a> <div class="nav-dropdown"> <a class="nav-link nav-dropdown-trigger" href="/#works" aria-haspopup="true"> <span>Works</span> <svg class="nav-caret" viewBox="0 0 12 12" aria-hidden="true" focusable="false"> <path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> <div class="nav-dropdown-menu" role="menu"> <a class="nav-dropdown-item" role="menuitem" href="/paint-brush/?lang=en">Paint Brush</a> <a class="nav-dropdown-item" role="menuitem" href="/ppt-conversion/?lang=en">PPT</a> </div> </div> </nav> <div class="nav-actions"> <a class="nav-lang" href="/zh/404/" lang="zh-CN" data-locale-switch="zh" aria-label="Language"> 中文 </a> </div> </header> <script>
+  (function () {
+    var root = document.body;
+    if (!root || !root.classList.contains("site-body")) return;
+    function setNavScrolled() {
+      root.setAttribute("data-nav-scrolled", window.scrollY > 36 ? "1" : "0");
+    }
+    setNavScrolled();
+    window.addEventListener("scroll", setNavScrolled, { passive: true });
+
+    document.querySelectorAll("[data-locale-switch]").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        try {
+          localStorage.setItem("amals-cn-locale", el.getAttribute("data-locale-switch") || "");
+        } catch (err) {}
+        var hash = location.hash || "";
+        if (!hash) return;
+        e.preventDefault();
+        var href = el.getAttribute("href") || "";
+        location.href = href.split("#")[0] + hash;
+      });
+    });
+  })();
+</script>  <main> <section class="hero home-hero not-found-hero"> <div class="home-hero-bg" aria-hidden="true"> <span class="home-hero-orb home-hero-orb-a"></span> <span class="home-hero-orb home-hero-orb-b"></span> </div> <div class="wrap hero-inner"> <div class="home-hero-copy"> <h1 class="hero-brand" aria-label="404"> <span class="hero-letter" style="--i: 0">4</span> <span class="hero-letter" style="--i: 1">0</span> <span class="hero-letter" style="--i: 2">4</span> </h1> <p class="home-hero-lede">Page not found.</p> <div class="hero-actions"> <a class="btn btn-primary home-hero-cta" href="/">Back home</a> </div> </div> </div> </section> </main>  <footer class="site-footer"> <div class="wrap footer-inner"> <p> <a href="mailto:amals.qy@gmail.com">Contact</a>
+· amals.qy@gmail.com </p> </div> </footer> </body></html>

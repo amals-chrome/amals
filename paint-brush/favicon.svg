@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Paint Brush">
+  <defs>
+    <linearGradient id="bg" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="55%" stop-color="#0f1a2e"/>
+      <stop offset="100%" stop-color="#082f3a"/>
+    </linearGradient>
+    <linearGradient id="brush" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="55%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#b8ff4d"/>
+    </linearGradient>
+    <linearGradient id="tip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b8ff4d"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="rgba(34,211,238,0.35)" stroke-width="1"/>
+  <g transform="translate(32 32) rotate(-38) translate(-32 -32)">
+    <rect x="29.5" y="13" width="5" height="24" rx="2.5" fill="url(#brush)"/>
+    <path fill="#38bdf8" d="M27.5 35.5h9l1.6 5H25.9l1.6-5z"/>
+    <path fill="url(#tip)" d="M26 40.5c1 5.5 2.9 9.4 6 11.5 3.1-2.1 5-6 6-11.5H26z"/>
+    <circle cx="32" cy="16.5" r="2.4" fill="#fff" opacity="0.85"/>
+  </g>
+  <circle cx="46" cy="18" r="3" fill="#b8ff4d" opacity="0.9"/>
+  <circle cx="50" cy="22" r="1.4" fill="#22d3ee"/>
+</svg>
